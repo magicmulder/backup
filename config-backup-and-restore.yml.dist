@@ -1,0 +1,65 @@
+#############################################################################################
+#
+# Backup/Restore Configuration Example 3.0
+#
+# (C) 2019 AdorableIllusion <code@adorable-illusion.com>
+#
+#############################################################################################
+
+targets:
+
+#############################################################################################
+# Core
+#############################################################################################
+
+  adorable_illusion: &adorable_illusion
+    description: "Main repository."
+    type: local
+    sources:
+      -
+        path: "/volume1/AdorableIllusion"
+
+  ai:
+    <<: *adorable_illusion
+
+  service:
+    description: "Custom scripts for downloads, backups etc."
+    type: mixed
+    backup_targets:
+      - "service-local"
+      - "service-cloud"
+
+  service-local:
+    type: local
+    sources:
+      -
+         path: "/volume1/AdorableIllusion/_Backup_Repository/Homelab/service"
+         runtime_initial: 6
+         runtime_update:  3
+
+  service-cloud:
+    type: cloud
+    target: "b2-core:"
+    sources:    
+      -
+         path: "/volume1/AdorableIllusion/_Backup_Repository/Homelab/service"     
+         runtime_initial: 10
+         runtime_update:  5
+         
+#############################################################################################
+#############################################################################################
+# BINARIES
+#############################################################################################
+#############################################################################################
+    
+binaries:
+
+  rsync:
+    path: rsync
+    
+  rclone:
+    path: rclone
+
+  unrar:
+    path: unrar  
+    
