@@ -1,3 +1,7 @@
+# Notes
+
+"Backup to default target" assumes that your files are under "/volume1" and your backup is mounted under "/volume1/NetBackup". This will be configurable more easily in a future release.
+
 # backup
 
  Backup predefined target(s)
