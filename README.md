@@ -1,8 +1,20 @@
+# Requirements
+
+Current versions of rsync and rclone installed and in $PATH.
+
+# Configuration
+
+See config-backup-and-restore.yml.dist for example configuration.
+
+# Installation
+
+Rename config-backup-and-restore.yml.dist to config-backup-and-restore.yml and put it somewhere that's in $PATH.
+
 # Notes
 
 "Backup to default target" assumes that your files are under "/volume1" and your backup is mounted under "/volume1/NetBackup". This will be configurable more easily in a future release.
 
-# backup
+# Backup
 
  Backup predefined target(s)
  
@@ -20,7 +32,7 @@
 	$scriptName backup /volume1/foo b2-core:
 	$scriptName backup /volume1/foo b2-core:/other/dir
 
-# restore 
+# Restore 
 
 Restore predefined target(s)
 
