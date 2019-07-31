@@ -30,7 +30,7 @@ class AdorableIllusion_BackupRestore {
 	# Config
 	#########################################################################################################
 	public $name 							= "AdorableIllusion Backup Manager";
-	public $version 						= "3.0.5";
+	public $version 						= "3.0.6";
 	public $exclude_patterns 				= array('\#snapshot/**', '@eaDir/**', 'Downloads_Torrents/**', '*.part', '_tmp/**', '.svn/**', '.git/**');
 	public $include_patterns 				= array();
 	public $dry_run 						= false;
@@ -72,7 +72,8 @@ class AdorableIllusion_BackupRestore {
 	
 	public $default_commandline 			= "#DRYRUN# #CONVERT# #delete# #UPDATE# #EXCLUDE# #INCLUDE# #FROM# #TO#";
 	public $move_default_command			= "mv ";
-	public $rsync_default_command 			= "rsync #SYNCMODE# -avh --progress --delete --update ";
+													/* Need "-O --no-t --no-perms --chmod=Du+rwx" to work for non-root users on CIFS mounts */
+	public $rsync_default_command 			= "rsync #SYNCMODE# -avhO --no-t --no-perms --chmod=Du+rwx --progress --delete --update ";
 	public $rclone_default_command 			= "rclone #SYNCMODE# --progress --fast-list --transfers 24 ";
 	public $unrar_default_command			= "unrar-downloads.sh ";
 	public $from_replacements 				= array(
